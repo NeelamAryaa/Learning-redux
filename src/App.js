@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import "./App.css";
+import { Decrement, Increment, Reset } from "./redux/counter/counter.actions";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const { counter, increment, decrement, reset } = this.props;
+    return (
+      <div className="App">
+        <div className="card">
+          <h1>Counter App</h1>
+          <h2>{counter}</h2>
+          <button onClick={increment}>Increment</button>
+          <button onClick={decrement}>Decrement</button>
+          <button onClick={reset}>Reset</button>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  counter: state.counterfeature.counter,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  increment: () => dispatch(Increment()),
+  decrement: () => dispatch(Decrement()),
+  reset: () => dispatch(Reset()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
