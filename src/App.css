@@ -1,11 +1,13 @@
 .App {
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
-  height: 45vw;
+
+  margin: 50px 0;
 }
 
 .card {
+  width: 30vw;
   text-align: center;
   padding: 20px;
   border: 1px solid gray;

@@ -21,6 +21,11 @@ const counterReducer = (state = INITIAL_STATE, action) => {
         ...state,
         counter: 0,
       };
+    // case CounterActionTypes.USERNAME:
+    //   return {
+    //     ...state,
+    //     username: action.payload,
+    //   };
     default:
       return state;
   }
